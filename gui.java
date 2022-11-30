@@ -1,10 +1,12 @@
+import java.io.IOException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
 
-public class gui  extends JFrame implements ActionListener{
+public class gui extends JFrame implements ActionListener{
+    static String path;
     public static void main(String[] args){
         gui a=new gui();
         a.asd();
@@ -33,7 +35,14 @@ public class gui  extends JFrame implements ActionListener{
         if (command.equals("selectfile")) {
             JFileChooser j = new JFileChooser();
             j.showOpenDialog(null);
-            String path=j.getSelectedFile().getAbsolutePath();
+            path=j.getSelectedFile().getAbsolutePath();
+            ftpclient s=new ftpclient();
+            try{
+            s.main();
+            }
+              catch(IOException eq) {
+                eq.printStackTrace();
+            }
         }
     }
 }
